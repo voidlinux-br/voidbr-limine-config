@@ -58,7 +58,9 @@ post_install() {
 	if [ -n "${MKISO_BUILD:-}" ]; then
 		echo "${YELLOW}[-]${RESET} Build de ISO detectado (MKISO_BUILD) — pulando."
 	else
-		update-limine || true
+	  if [ -f /usr/local/bin/update-limine ]; then
+		  update-limine || true
+    fi
 	fi
 }
 
@@ -72,6 +74,8 @@ post_upgrade() {
 	if [ -n "${MKISO_BUILD:-}" ]; then
 		echo "${YELLOW}[-]${RESET} Build de ISO detectado (MKISO_BUILD) — pulando."
 	else
-		update-limine || true
+	  if [ -f /usr/local/bin/update-limine ]; then
+		  update-limine || true
+	  fi
 	fi
 }
