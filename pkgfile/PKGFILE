@@ -58,7 +58,7 @@ post_install() {
 	if [ -n "${MKISO_BUILD:-}" ]; then
 		echo "${YELLOW}[-]${RESET} Build de ISO detectado (MKISO_BUILD) — pulando."
 	else
-	  if [ -f /usr/local/bin/update-limine ]; then
+	  if [ -z "${VOIDBR_INSTALLER:-}" ]; then
 		  /usr/local/bin/update-limine || true
     fi
 	fi
@@ -74,7 +74,7 @@ post_upgrade() {
 	if [ -n "${MKISO_BUILD:-}" ]; then
 		echo "${YELLOW}[-]${RESET} Build de ISO detectado (MKISO_BUILD) — pulando."
 	else
-	  if [ -f /usr/local/bin/update-limine ]; then
+    if [ -z "${VOIDBR_INSTALLER:-}" ]; then
 		  /usr/local/bin/update-limine || true
 	  fi
 	fi
